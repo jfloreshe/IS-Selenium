@@ -8,15 +8,15 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import org.junit.Test;
 import org.junit.Ignore;
-import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.AfterClass;
 import static org.junit.Assert.assertEquals;
 
 
 public class TestPercentageCalculator {
-		
-    @Test
-    public void testPositivePositive() {
-    	WebDriver driver = new FirefoxDriver();
+	private static WebDriver driver = new FirefoxDriver();
+	@BeforeClass
+	public static void openSelenium() {
 	      //Puts an Implicit wait, Will wait for 10 seconds before throwing exception
 	      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	      
@@ -28,6 +28,10 @@ public class TestPercentageCalculator {
 	      
 	      // Click on Percent Calculators
 	      driver.findElement(By.xpath(".//*[@id = 'hl3']/li[3]/a")).click();
+	}
+    @Test
+    public void testPositivePositive() {
+    	
     	// Enter value 10 in the first number of the percent Calculator
 	      driver.findElement(By.id("cpar1")).sendKeys("10");
 	      
@@ -44,27 +48,15 @@ public class TestPercentageCalculator {
 	      String result =
 	         driver.findElement(By.xpath(".//*[@id = 'content']/p[2]/font/b")).getText();
 	      
-	      driver.close();
 	      assertEquals("5", result);
     }
     @Test
     public void testPositiveNegative() {
-    	WebDriver driver = new FirefoxDriver();
-	      //Puts an Implicit wait, Will wait for 10 seconds before throwing exception
-	      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-	      
-	      //Launch website
-	      driver.navigate().to("http://www.calculator.net/");
-	      
-	      //Maximize the browser
-	      driver.manage().window().maximize();
-	      
-	      // Click on Percent Calculators
-	      driver.findElement(By.xpath(".//*[@id = 'hl3']/li[3]/a")).click();
+    	
     	// Enter value 10 in the first number of the percent Calculator
 	      driver.findElement(By.id("cpar1")).sendKeys("10");
 	      
-	      // Enter value 50 in the second number of the percent Calculator
+	      // Enter value -50 in the second number of the percent Calculator
 	      driver.findElement(By.id("cpar2")).sendKeys("-50");
 	      
 	      // Click Calculate Button
@@ -77,24 +69,12 @@ public class TestPercentageCalculator {
 	      String result =
 	         driver.findElement(By.xpath(".//*[@id = 'content']/p[2]/font/b")).getText();
 	      
-	      driver.close();
 	      assertEquals("-5", result);
     }
     @Test
     public void testNegativePositive() {
-    	WebDriver driver = new FirefoxDriver();
-	      //Puts an Implicit wait, Will wait for 10 seconds before throwing exception
-	      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-	      
-	      //Launch website
-	      driver.navigate().to("http://www.calculator.net/");
-	      
-	      //Maximize the browser
-	      driver.manage().window().maximize();
-	      
-	      // Click on Percent Calculators
-	      driver.findElement(By.xpath(".//*[@id = 'hl3']/li[3]/a")).click();
-    	// Enter value 10 in the first number of the percent Calculator
+    	
+    	// Enter value -10 in the first number of the percent Calculator
 	      driver.findElement(By.id("cpar1")).sendKeys("-10");
 	      
 	      // Enter value 50 in the second number of the percent Calculator
@@ -110,27 +90,15 @@ public class TestPercentageCalculator {
 	      String result =
 	         driver.findElement(By.xpath(".//*[@id = 'content']/p[2]/font/b")).getText();
 	      
-	      driver.close();
 	      assertEquals("-5", result);
     }
     @Test
     public void testNegativeNegative() {
-    	WebDriver driver = new FirefoxDriver();
-	      //Puts an Implicit wait, Will wait for 10 seconds before throwing exception
-	      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-	      
-	      //Launch website
-	      driver.navigate().to("http://www.calculator.net/");
-	      
-	      //Maximize the browser
-	      driver.manage().window().maximize();
-	      
-	      // Click on Percent Calculators
-	      driver.findElement(By.xpath(".//*[@id = 'hl3']/li[3]/a")).click();
-    	// Enter value 10 in the first number of the percent Calculator
+    	
+    	// Enter value -10 in the first number of the percent Calculator
 	      driver.findElement(By.id("cpar1")).sendKeys("-10");
 	      
-	      // Enter value 50 in the second number of the percent Calculator
+	      // Enter value -50 in the second number of the percent Calculator
 	      driver.findElement(By.id("cpar2")).sendKeys("-50");
 	      
 	      // Click Calculate Button
@@ -143,27 +111,15 @@ public class TestPercentageCalculator {
 	      String result =
 	         driver.findElement(By.xpath(".//*[@id = 'content']/p[2]/font/b")).getText();
 	      
-	      driver.close();
 	      assertEquals("5", result);
     }
     @Test
     public void testWordWord() {
-    	WebDriver driver = new FirefoxDriver();
-	      //Puts an Implicit wait, Will wait for 10 seconds before throwing exception
-	      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-	      
-	      //Launch website
-	      driver.navigate().to("http://www.calculator.net/");
-	      
-	      //Maximize the browser
-	      driver.manage().window().maximize();
-	      
-	      // Click on Percent Calculators
-	      driver.findElement(By.xpath(".//*[@id = 'hl3']/li[3]/a")).click();
-    	// Enter value 10 in the first number of the percent Calculator
+    	
+    	// Enter value test in the first number of the percent Calculator
 	      driver.findElement(By.id("cpar1")).sendKeys("test");
 	      
-	      // Enter value 50 in the second number of the percent Calculator
+	      // Enter value test in the second number of the percent Calculator
 	      driver.findElement(By.id("cpar2")).sendKeys("test");
 	      
 	      // Click Calculate Button
@@ -176,28 +132,16 @@ public class TestPercentageCalculator {
 	      String result =
 	         driver.findElement(By.xpath(".//*[@id = 'content']/p[2]/font")).getText();
 	      
-	      driver.close();
 	      assertEquals("Please provide two numeric values in any fields below.", result);
     }
     
     @Test
     public void testWordNumber() {
-    	WebDriver driver = new FirefoxDriver();
-	      //Puts an Implicit wait, Will wait for 10 seconds before throwing exception
-	      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-	      
-	      //Launch website
-	      driver.navigate().to("http://www.calculator.net/");
-	      
-	      //Maximize the browser
-	      driver.manage().window().maximize();
-	      
-	      // Click on Percent Calculators
-	      driver.findElement(By.xpath(".//*[@id = 'hl3']/li[3]/a")).click();
-    	// Enter value 10 in the first number of the percent Calculator
+    	
+    	// Enter value test in the first number of the percent Calculator
 	      driver.findElement(By.id("cpar1")).sendKeys("test");
 	      
-	      // Enter value 50 in the second number of the percent Calculator
+	      // Enter value 15 in the second number of the percent Calculator
 	      driver.findElement(By.id("cpar2")).sendKeys("15");
 	      
 	      // Click Calculate Button
@@ -210,7 +154,11 @@ public class TestPercentageCalculator {
 	      String result =
 	         driver.findElement(By.xpath(".//*[@id = 'content']/p[2]/font")).getText();
 	      
-	      driver.close();
 	      assertEquals("Please provide two numeric values in any fields below.", result);
+    }
+    
+    @AfterClass
+    public static void closeSelenium() {
+    	driver.close();
     }
 }
